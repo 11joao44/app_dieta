@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Peso, Table, Title } from "./style";
 
 const Calorias = () => {
-  const [gordura, setGordura] = useState("1.0");
-  const [carbo, setCarbo] = useState("1.0");
-  const [proteina, setProteina] = useState("1.6");
+  const gordura = "1.0";
+  const carbo = "1.0";
+  const proteina = "1.6";
   const [kg, setKg] = useState("");
   const [metaP, setMetaP] = useState(0);
   const [metaC, setMetaC] = useState(0);
