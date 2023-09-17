@@ -14,14 +14,13 @@ export const AnimaçõesSlice = createSlice({
   reducers: {
     //Animação de abrir e fechar 'calorias'
     animaçãoExibir: (state) => {
-      if (state.exibir == false) {
-        state.exibir = true;
-      } else {
-        state.exibir = false;
-      }
+      state.exibir = true;
     },
+    animaçãoOcultar: (state) => {
+      state.exibir = false;
+    }
   },
 });
 
-export const { animaçãoExibir } = AnimaçõesSlice.actions;
+export const { animaçãoExibir, animaçãoOcultar } = AnimaçõesSlice.actions;
 export default AnimaçõesSlice.reducer;
