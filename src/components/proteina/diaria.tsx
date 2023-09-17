@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Animação, Calorias, MacroNutri, Main, Peso, Table } from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import { RootReducer } from "../../store";
-import { animaçãoExibir } from "../../store/reducers/animações";
+import { animaçãoExibir, animaçãoOcultar } from "../../store/reducers/animações";
 
 const GramasPorKG = () => {
   const [proteina, setProteina] = useState("");
@@ -25,8 +25,6 @@ const GramasPorKG = () => {
     const calorias = (caloriaPro + caloriaCarbo + caloriaGord) * porcentDec;
 
     return setMeta(calorias);
-    const nomeAlimento = alimento;
-    return setAlimento(nomeAlimento);
   };
 
   const proteinaPorGrama = () => {
@@ -48,6 +46,9 @@ const GramasPorKG = () => {
   const mostrar = () => {
     dispatch(animaçãoExibir());
   };
+  const ocultar = () => {
+    dispatch(animaçãoOcultar());
+  };
 
   return (
     <Main>
@@ -57,12 +58,14 @@ const GramasPorKG = () => {
           value={alimento}
           onChange={(e) => setAlimento(e.target.value)}
           placeholder="Produto"
+          onFocus={ocultar}
         />
         <input
           type="text"
           value={gramas}
           onChange={(e) => setGramas(e.target.value)}
           placeholder="Quantas Gramas"
+          onFocus={ocultar}
         />
         <button
           onClick={() => {
@@ -81,6 +84,7 @@ const GramasPorKG = () => {
             type="text"
             value={proteina}
             onChange={(e) => setProteina(e.target.value)}
+            placeholder="Proteína do alimento"
           />
         </MacroNutri>
         <MacroNutri>
@@ -89,7 +93,7 @@ const GramasPorKG = () => {
             type="text"
             value={carbo}
             onChange={(e) => setCarbo(e.target.value)}
-            placeholder="Proteina recomendada"
+            placeholder="Carboidrato do alimento"
           />
         </MacroNutri>
         <MacroNutri>
@@ -98,7 +102,7 @@ const GramasPorKG = () => {
             type="text"
             value={gordura}
             onChange={(e) => setGordura(e.target.value)}
-            placeholder="Gordura recomendada"
+            placeholder="Gordura do alimento"
           />
         </MacroNutri>
       </Calorias>
@@ -109,9 +113,6 @@ const GramasPorKG = () => {
             <tr>
               <th>
                 <p>Alimento</p>
-              </th>
-              <th>
-                <p>Calorias</p>
               </th>
               <th>
                 <p>Gorduras</p>
@@ -129,12 +130,6 @@ const GramasPorKG = () => {
                 <p>{alimento}</p>
               </th>
               <td>
-                <p>
-                  {gramas}g de {alimento} possui{" "}
-                  <b>{meta.toFixed(1)} calorias</b>
-                </p>
-              </td>
-              <td>
                 <p>{gordoPorGrama()}g</p>
               </td>
               <td>
@@ -146,6 +141,7 @@ const GramasPorKG = () => {
             </tr>
           </tbody>
         </Table>
+        <p>{gramas}g de {alimento} possui <b>{meta.toFixed(1)} calorias</b></p>
       </Animação>
     </Main>
   );
