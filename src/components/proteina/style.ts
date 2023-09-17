@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 export const Main = styled.div`
   margin: 10% auto;
+
+  @media screen and (max-width: 786px) {
+    margin: 0;
+  }
+
 `;
 
 export const Peso = styled.div`
@@ -19,6 +24,11 @@ export const Peso = styled.div`
     color: #000;
     font-size: 16px;
     outline: none;
+
+    @media screen and (max-width: 786px) {
+    font-size: 12px;
+    padding: 2px 4px;
+  }
   }
 `;
 
@@ -30,17 +40,19 @@ export const Calculo = styled.div`
 `;
 
 export const Calorias = styled.div`
-  display: grid;
-  text-align: center;
-  grid-template-columns: 120px;
-  gap: 8px;
-  margin: 32px auto;
+
+  @media screen and (max-width: 786px) {
+    font-size: 12px;
+    transform: scale(70%);
+    margin: 8px auto;
+  }
 `;
 
 export const MacroNutri = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  width: 320px;
+  padding: 4px 64px;
 
   input {
     padding: 4px 6px;
@@ -50,6 +62,9 @@ export const MacroNutri = styled.div`
 
 export const Animação = styled.p`
   display: none;
+  p {
+    text-align: center;
+  }
 
   &.is-open {
     display: block;
@@ -59,14 +74,24 @@ export const Animação = styled.p`
 export const Title = styled.h3`
   text-align: center;
   margin: 32px auto;
+
+  @media screen and (max-width: 786px) {
+    font-size: 12px;
+    margin: 16px auto;
+  }
 `;
 
 export const Table = styled.table`
   border-spacing: 0;
   margin: 32px auto;
   border-radius: 8px;
-  width: 100%;
   background-color: #333;
+
+  @media screen and (max-width: 786px) {
+    font-size: 12px;
+    margin: 8px auto;
+    transform: scale(80%);
+  }
 
   th,
   td {
@@ -75,9 +100,6 @@ export const Table = styled.table`
     text-align: center;
     color: white;
     background-color: #333;
-  }
-
-  th {
   }
 
   tbody {
